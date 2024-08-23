@@ -6,6 +6,7 @@ logging.basicConfig(level=logging.INFO)
 
 project_name='flight_fare'
 list_of_files=[
+    f"{project_name}/__init__.py",
     f"{project_name}/components/__init__.py",
     f"{project_name}/components/data_ingestion.py",
     f"{project_name}/components/data_cleaning.py",
@@ -22,7 +23,7 @@ list_of_files=[
     "setup.py",
     "main.py",
     "app.py",
-    "mysql.py",
+    "monog.py",
     "Dockerfile",
     "requirements.txt"
 
