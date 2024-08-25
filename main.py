@@ -3,11 +3,11 @@ import sys
 import pandas as pd
 from Config.config import Config
 from src.exception import CustomException
-from src.logger import logging
+
 from src.components.data_ingestion import DataIngestion
 from src.components.data_cleaning import DataCleaning
 from src.components.data_transformation import DataTransformation
-
+from src.logger import logging
 
 
 def main():
