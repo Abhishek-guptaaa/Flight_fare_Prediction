@@ -1,7 +1,7 @@
 import os
 import sys
-from flight_fare.exception import CustomException
-from flight_fare.logger import logging
+from src.exception import CustomException
+from src.logger import logging
 import pandas as pd
 from mongo import read_mongo_data
 from dataclasses import dataclass

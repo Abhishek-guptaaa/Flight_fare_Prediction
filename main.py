@@ -1,9 +1,9 @@
 import os
 import sys
 import pandas as pd
-from flight_fare.exception import CustomException
-from flight_fare.logger import logging
-from flight_fare.components.data_ingestion import DataIngestion
+from src.exception import CustomException
+from src.logger import logging
+from src.components.data_ingestion import DataIngestion
 
 
 

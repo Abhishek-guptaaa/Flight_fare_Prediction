@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 import pandas as pd
-from flight_fare.logger import logging  # Ensure your logging setup is correctly imported
+from src.logger import logging  # Ensure your logging setup is correctly imported
 
 def read_mongo_data():
     """Read data from MongoDB collection and convert to DataFrame."""
