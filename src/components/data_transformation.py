@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from Config.config import Config
 from src.exception.exception import CustomException
-from src.logger.logger import logger
+from src.logger.logger import logging
 
 class DataTransformation:
     def __init__(self):
@@ -37,7 +37,7 @@ class DataTransformation:
             os.makedirs('models', exist_ok=True)
             joblib.dump(le, self.preprocessor_obj_file_path)
 
-            logger.info("Data transformation complete and preprocessor saved.")
+            logging.info("Data transformation complete and preprocessor saved.")
             return X_train, X_test, y_train, y_test
         except Exception as e:
             raise CustomException(e, sys)
