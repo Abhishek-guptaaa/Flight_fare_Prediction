@@ -7,6 +7,7 @@ from src.logger.logger import logging
 from src.components.data_ingestion import DataIngestion
 from src.components.data_cleaning import DataCleaning
 from src.components.data_transformation import DataTransformation
+from src.components.model_training import ModelTrainer
 
 
 def main():
@@ -27,6 +28,12 @@ def main():
         # Data Transformation
         data_transformation = DataTransformation()
         X_train, X_test, y_train, y_test = data_transformation.initiate_data_transformation(Config.CLEANED_DATA_PATH)
+
+        # Model Training
+        model_trainer = ModelTrainer()
+        best_model, r2 = model_trainer.initiate_model_trainer(X_train, X_test, y_train, y_test)
+
+        logging.info(f"Best model trained with R^2 score: {r2}")
 
         # logging.info("Model training and evaluation completed successfully")
 
