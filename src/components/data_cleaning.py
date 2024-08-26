@@ -1,8 +1,8 @@
 import os
 import sys
 import pandas as pd
-from src.exception import CustomException
-from src.logger import logging
+from src.exception.exception import CustomException
+from src.logger.logger import logging
 from Config.config import Config
 
 
@@ -30,30 +30,35 @@ class DataCleaning:
             df.drop(["Date_of_Journey"], axis=1, inplace=True)
 
             # Extracting Dep_hour and Dep_min from Dep_Time
-            df["Dep_hour"] = pd.to_datetime(df["Dep_Time"]).dt.hour
-            df["Dep_min"] = pd.to_datetime(df["Dep_Time"]).dt.minute
+        
+            df["Dep_hour"] = pd.to_datetime(df["Dep_Time"], format="%H:%M").dt.hour
+            df["Dep_min"] = pd.to_datetime(df["Dep_Time"], format="%H:%M").dt.minute
             df.drop(["Dep_Time"], axis=1, inplace=True)
 
-            # Extracting Arrival_hour and Arrival_min from Arrival_Time
-            df["Arrival_hour"] = pd.to_datetime(df.Arrival_Time).dt.hour
-            df["Arrival_min"] = pd.to_datetime(df.Arrival_Time).dt.minute
+            # Extract only the time part from Arrival_Time
+            df["Arrival_Time"] = df["Arrival_Time"].str.extract(r'(\d{2}:\d{2})')  # Extract time part
+
+            # Convert to datetime, assuming the extracted time is in HH:MM format
+            df["Arrival_Time"] = pd.to_datetime(df["Arrival_Time"], format="%H:%M", errors='coerce')
+
+            # Extract hour and minute
+            df["Arrival_hour"] = df["Arrival_Time"].dt.hour
+            df["Arrival_min"] = df["Arrival_Time"].dt.minute
             df.drop(["Arrival_Time"], axis=1, inplace=True)
 
-            # Handling Total_Stops
-            df['Total_Stops'].replace(['1 stop', 'non-stop', '2 stops', '3 stops', '4 stops'], [1, 0, 2, 3, 4], inplace=True)
+            df['Total_Stops'] = df['Total_Stops'].map({'non-stop':0, '1 stop': 1,'2 stops': 2,'3 stops': 3,'4 stops': 4})
+
 
             # Handling Airline
-            df["Airline"].replace({'Multiple carriers Premium economy': 'Other',
+            df["Airline"]=df["Airline"].replace({'Multiple carriers Premium economy': 'Other',
                                    'Jet Airways Business': 'Other',
                                    'Vistara Premium economy': 'Other',
-                                   'Trujet': 'Other'}, inplace=True)
+                                   'Trujet': 'Other'})
 
             # Handling Additional_Info
-            df["Additional_Info"].replace({'Change airports': 'Other',
-                                           'Business class': 'Other',
-                                           '1 Short layover': 'Other',
-                                           'Red-eye flight': 'Other',
-                                           '2 Long layover': 'Other'}, inplace=True)
+            df["Additional_Info"]=df["Additional_Info"].replace({'Change airports': 'Other','Business class': 'Other',
+                                           '1 Short layover': 'Other','Red-eye flight': 'Other',
+                                           '2 Long layover': 'Other'})
 
             return df
         except Exception as e:
@@ -69,3 +74,5 @@ class DataCleaning:
             return cleaned_data_path
         except Exception as e:
             raise CustomException(e, sys)
+
+

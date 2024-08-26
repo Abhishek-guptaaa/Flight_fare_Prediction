@@ -5,6 +5,7 @@ from Config.config import Config
 from src.exception.exception import CustomException
 from src.logger.logger import logging
 from src.components.data_ingestion import DataIngestion
+from src.components.data_cleaning import DataCleaning
 
 
 def main():
@@ -17,12 +18,10 @@ def main():
 
     
 
-        # # Data Cleaning
-        # data_cleaning = DataCleaning()
-        # cleaned_data_path = data_cleaning.initiate_data_cleaning()
+        # Data Cleaning
+        data_cleaning = DataCleaning()
+        Config.CLEANED_DATA_PATH = data_cleaning.initiate_data_cleaning()
 
-        # # Update Config with the cleaned data path
-        # Config.CLEANED_DATA_PATH = cleaned_data_path
 
         # # Data Transformation
         # data_transformation = DataTransformation()
