@@ -1,7 +1,7 @@
 import os
 import sys
-from src.exception import CustomException
-from src.logger import logging
+from src.exception.exception import CustomException
+from src.logger.logger import logging
 import pandas as pd
 from mongo import read_mongo_data
 from dataclasses import dataclass
