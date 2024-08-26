@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-from src.config import Config
+from Config.config import Config
 from src.exception import CustomException
 from src.logger import logger
 

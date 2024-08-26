@@ -2,8 +2,9 @@ import os
 import sys
 import pandas as pd
 from src.exception import CustomException
-from src.logger import logger
-from src.config import Config
+from src.logger import logging
+from Config.config import Config
+
 
 class DataCleaning:
     def __init__(self):
@@ -64,7 +65,7 @@ class DataCleaning:
             df = self.clean_data(df)
             cleaned_data_path = Config.CLEANED_DATA_PATH
             df.to_csv(cleaned_data_path, index=False)
-            logger.info("Data cleaning completed.")
+            logging.info("Data cleaning completed.")
             return cleaned_data_path
         except Exception as e:
             raise CustomException(e, sys)

@@ -1,8 +1,11 @@
+import os
+import sys
+from src.logger.logger import logging
 from pymongo import MongoClient
 from dotenv import load_dotenv
-import os
+
 import pandas as pd
-from src.logger import logging  # Ensure your logging setup is correctly imported
+
 
 def read_mongo_data():
     """Read data from MongoDB collection and convert to DataFrame."""
