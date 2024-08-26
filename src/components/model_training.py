@@ -109,3 +109,4 @@ class ModelTrainer:
         except Exception as e:
             logging.error(f"Error saving object to {file_path}: {str(e)}")
             raise CustomException(e, sys)
+
