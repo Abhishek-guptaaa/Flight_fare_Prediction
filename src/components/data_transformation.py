@@ -5,8 +5,8 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from Config.config import Config
-from src.exception import CustomException
-from src.logger import logger
+from src.exception.exception import CustomException
+from src.logger.logger import logger
 
 class DataTransformation:
     def __init__(self):

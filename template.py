@@ -4,7 +4,7 @@ from pathlib import Path
 
 logging.basicConfig(level=logging.INFO)
 
-project_name='flight_fare'
+project_name='src'
 list_of_files=[
     f"{project_name}/__init__.py",
     f"{project_name}/components/__init__.py",
