@@ -1,5 +1,3 @@
-# 
-
 import os
 import sys
 import pandas as pd
@@ -9,7 +7,7 @@ from src.logger.logger import logging
 from src.components.data_ingestion import DataIngestion
 from src.components.data_cleaning import DataCleaning
 from src.components.data_transformation import DataTransformation
-from src.components.model_training import ModelTrainer
+from src.components.model_training import ModelTrainer  # Import ModelTrainer
 
 def main():
     try:
@@ -17,17 +15,16 @@ def main():
 
         # Data Ingestion
         data_ingestion = DataIngestion()
-        train_path, test_path = data_ingestion.initiate_data_ingestion()
+        Config.RAW_DATA_PATH = data_ingestion.initiate_data_ingestion()
 
         # Data Cleaning
         data_cleaning = DataCleaning()
-        cleaned_data_path = data_cleaning.initiate_data_cleaning()
+        Config.CLEANED_DATA_PATH = data_cleaning.initiate_data_cleaning()
 
         # Data Transformation
         data_transformation = DataTransformation()
-        X_train, X_test, y_train, y_test = data_transformation.initiate_data_transformation(cleaned_data_path)
+        X_train, X_test, y_train, y_test = data_transformation.initiate_data_transformation(Config.CLEANED_DATA_PATH)
 
-    
         # Model Training
         model_trainer = ModelTrainer()
         best_model, r2 = model_trainer.initiate_model_trainer(X_train, X_test, y_train, y_test)
