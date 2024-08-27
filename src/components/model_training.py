@@ -10,6 +10,10 @@ from xgboost import XGBRegressor
 import joblib
 from src.exception.exception import CustomException
 from src.logger.logger import logging
+import mlflow
+import mlflow.sklearn
+
+
 
 @dataclass
 class ModelTrainerConfig:
@@ -71,6 +75,9 @@ class ModelTrainer:
             best_model = models[best_model_name]
 
             logging.info(f"Best model: {best_model_name}, Score: {best_model_score}")
+            mlflow.log_param("best_model_name", best_model_name)
+            mlflow.log_metric("best_model_score", best_model_score)
+
 
             if best_model_score < 0.6:
                 raise CustomException("No best model found")
@@ -109,3 +116,5 @@ class ModelTrainer:
         except Exception as e:
             logging.error(f"Error saving object to {file_path}: {str(e)}")
             raise CustomException(e, sys)
+
+

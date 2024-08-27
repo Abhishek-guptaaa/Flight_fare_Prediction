@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Flight%20Fare%20Prediction/mlruns/0/6ba51c32d8ee42aa8779fc17e460418f/artifacts
+end_time: 1724763748424
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 6ba51c32d8ee42aa8779fc17e460418f
+run_uuid: 6ba51c32d8ee42aa8779fc17e460418f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724762340215
+status: 4
+tags: []
+user_id: Abhi
