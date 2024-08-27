@@ -13,5 +13,6 @@ scikit-learn==1.5.1
 scipy==1.13.1
 seaborn==0.13.2
 xgboost==2.1.0
+streamlit
 cryptography  # this is used handling cryptography error
 -e .
