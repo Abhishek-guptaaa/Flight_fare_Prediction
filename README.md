@@ -4,11 +4,6 @@ Project Overview
 
 The Flight Fare Prediction project aims to build a machine learning model to predict flight prices based on various features such as airline, source and destination cities, total stops, and journey timings. This project involves several stages, including data ingestion, cleaning, transformation, model training, and evaluation.
 
-conda activate venv/
-
-git clone https://github.com/Abhishek-guptaaa/Flight_fare_Prediction.git
-
-
 Features
 Data Cleaning: Handles missing values, outlier detection, and data normalization.
 
@@ -28,8 +23,17 @@ Required Python libraries: numpy, pandas, scikit-learn, xgboost, joblib, mlflow,
 ### MLflow Integration
 This project uses MLflow for tracking experiments, logging parameters, and evaluating model performance. Ensure MLflow is properly configured to log metrics and parameters.
 
+# Project Demo How to Work
+[RecordedVideo (2).webm](https://github.com/user-attachments/assets/41fcf329-f31f-4f54-9446-df18afe74efa)
 
 
+# How to Run This Project
+1. conda activate venv/
+2. git clone https://github.com/Abhishek-guptaaa/Flight_fare_Prediction.git
+3. pip install -r requirements.txt
+4. python mongo.py
+5. python main.py
+6. python app.py
 
 
 # AWS-CICD-Deployment-with-Github-Actions
